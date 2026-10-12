@@ -1,0 +1,89 @@
+@{
+    Layout = null;
+    ViewBag.Title = "TOEIC Practice";
+}
+
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TOEIC Practice</title>
+    <link rel="stylesheet" href="~/css/toeic-app.css" asp-append-version="true" />
+</head>
+<body>
+
+<main id="toeic-app" class="toeic-shell">
+    <header class="toeic-topbar">
+        <div class="toeic-brand"><span class="brand-mark">▣</span><span>TOEIC Practice</span></div>
+        <button class="icon-button" type="button" aria-label="Thông báo">◌</button>
+    </header>
+
+    <section class="toeic-view" data-view="student-list">
+        <div class="toeic-heading">
+            <div>
+                <span class="eyebrow">LUYỆN THI READING</span>
+                <h1>Sẵn sàng luyện đọc?</h1>
+                <p>Chọn một đề thi để bắt đầu luyện tập.</p>
+            </div>
+            <span class="avatar">AN</span>
+        </div>
+        <div class="segmented"><button class="active" type="button">Tất cả</button><button type="button">Chưa làm</button><button type="button">Đã làm</button></div>
+        <div id="exam-list" class="stack-list"><div class="loading-card">Đang tải danh sách đề thi...</div></div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="exam-detail">
+        <button class="back-link" data-action="back-list" type="button">‹ <span>Chi tiết đề thi</span></button>
+        <div id="exam-detail-content"></div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="taking">
+        <div class="exam-toolbar"><button class="back-link" data-action="back-detail" type="button">‹ <span>Đề thi</span></button><span id="timer" class="timer">75:00</span></div>
+        <div id="question-content"></div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="submit-confirm">
+        <button class="back-link" data-action="back-taking" type="button">‹ <span>Xác nhận nộp bài</span></button>
+        <div class="confirm-card">
+            <div class="confirm-icon">□</div>
+            <h1>Bạn muốn nộp bài?</h1>
+            <p>Bạn vẫn còn <strong id="unanswered-count">0</strong> câu chưa trả lời. Hãy kiểm tra lại trước khi nộp bài.</p>
+            <div id="submit-summary" class="summary-card"></div>
+            <button class="primary-button" data-action="submit-exam" type="button">Xác nhận nộp bài ✓</button>
+            <button class="secondary-button" data-action="back-taking" type="button">Quay lại làm bài</button>
+        </div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="result">
+        <button class="back-link" data-action="back-list" type="button">‹ <span>Kết quả bài thi</span></button>
+        <div id="result-content"></div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="admin-list">
+        <div class="admin-heading"><div><span class="eyebrow">ADMIN MOBILE</span><h1>Quản lý đề thi</h1></div><span class="avatar">AD</span></div>
+        <div class="admin-actions"><input id="admin-search" class="input-control" placeholder="Tìm tên đề thi..." /><button class="primary-button compact" data-action="open-admin-import" type="button">+ Import Word</button></div>
+        <div id="admin-list" class="stack-list"></div>
+    </section>
+
+    <section class="toeic-view hidden" data-view="admin-import">
+        <button class="back-link" data-action="back-admin" type="button">‹ <span>Import và chỉnh sửa đề thi</span></button>
+        <div class="admin-import-card">
+            <label class="upload-zone" for="word-file"><span class="upload-icon">↑</span><strong>Chọn file Word</strong><span>Kéo thả file .docx vào đây</span><input id="word-file" type="file" accept=".docx" /></label>
+            <div id="file-info" class="file-info hidden"></div>
+            <button class="primary-button full" data-action="validate-file" type="button">Kiểm tra file</button>
+            <div id="validation-result" class="validation-box hidden"></div>
+            <div id="edit-panel" class="edit-panel hidden"><h2>Chỉnh sửa câu hỏi</h2><div id="edit-question-list"></div><button class="primary-button full" data-action="save-edit" type="button">Lưu thay đổi</button></div>
+            <button class="secondary-button full" data-action="cancel-import" type="button">Hủy import</button>
+            <button class="primary-button full hidden" data-action="import-file" type="button">Xác nhận import</button>
+        </div>
+    </section>
+
+    <nav class="toeic-bottom-nav">
+        <button class="active" data-action="nav-student" type="button"><span>▦</span>Đề thi</button>
+        <button data-action="nav-progress" type="button"><span>◷</span>Tiến độ</button>
+        <button data-action="nav-admin" type="button"><span>⚙</span>Admin</button>
+    </nav>
+</main>
+<script src="~/view-resources/Views/Toeic/Index.js" asp-append-version="true"></script>
+</body>
+</html>

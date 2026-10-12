@@ -1,0 +1,34 @@
+# Chuẩn hoá line ending cho toàn repo.
+# Trong repo luôn lưu LF; khi checkout ra Windows sẽ tự đổi thành CRLF.
+* text=auto
+
+*.cs       text diff=csharp
+*.cshtml   text
+*.csproj   text
+*.sln      text eol=crlf
+*.ps1      text eol=crlf
+*.sh       text eol=lf
+*.dart     text
+*.yaml     text
+*.yml      text
+*.json     text
+*.md       text
+*.sql      text
+*.config   text
+*.xml      text
+
+# File nhị phân - không đụng tới
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.svg      text
+*.docx     binary
+*.pdf      binary
+*.dll      binary
+*.exe      binary
+*.pdb      binary
+*.mdf      binary
+*.ldf      binary
+*.zip      binary

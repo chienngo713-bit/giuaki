@@ -1,0 +1,104 @@
+# =========================================================
+#  TOEIC Project - root .gitignore
+#  Backend: ASP.NET Boilerplate (MVC + Web API)  /  Frontend: Flutter
+# =========================================================
+
+# ---------- .NET build outputs ----------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/output/
+*.dll
+*.exe
+*.pdb
+*.xml.doc
+*.nupkg
+*.snupkg
+artifacts/
+project.lock.json
+project.assets.json
+*.binlog
+
+# Kết quả restore/verify build (không phải mã nguồn) - xem backend/tools/
+/backend/tools/buildcheck/
+
+# ---------- Visual Studio / Rider / VS Code ----------
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# ---------- NuGet ----------
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+# ---------- Secrets & cấu hình máy cục bộ ----------
+secrets.json
+*.secrets.json
+
+# ---------- Log & file tạm ----------
+*.log
+logs/
+[Tt]est[Rr]esult*/
+*.tmp
+*.cache
+*.pidb
+*.svclog
+~$*
+*~
+
+# ---------- SQL Server ----------
+*.mdf
+*.ldf
+*.ndf
+*.bak
+
+# ---------- Frontend (Flutter / Dart) ----------
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+/frontend/build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+android/.gradle/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+macos/Flutter/ephemeral/
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+coverage/
+
+# ---------- Node (nếu cài thêm ở wwwroot) ----------
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# ---------- Hệ điều hành ----------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
