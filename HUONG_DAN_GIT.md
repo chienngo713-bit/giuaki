@@ -7,7 +7,7 @@ và các bước còn lại để đẩy lên GitHub.
 
 ## 0. Trạng thái repo hiện tại
 
-Đã xong phần chuẩn bị (không cần làm lại):
+Toàn bộ các bước đã hoàn tất — repo đã nằm trên GitHub:
 
 | Việc | Kết quả |
 | --- | --- |
@@ -15,7 +15,9 @@ và các bước còn lại để đẩy lên GitHub.
 | `.gitattributes` | Chuẩn hoá line ending: lưu LF trong repo, checkout CRLF trên Windows |
 | `README.md` | Mô tả dự án, cách chạy backend/frontend |
 | `git init -b main` | Repo đã được khởi tạo, nhánh mặc định `main` |
-| `git add -A` | 908 file, ~26.4 MB — **không** có file build nào lọt vào |
+| `git add -A` + `git commit` | 911 file, ~26.4 MB — **không** có file build nào lọt vào |
+| `git remote add origin` | `origin` → `https://github.com/chienngo713-bit/giuaki.git` |
+| `git push -u origin main` | Đã đẩy thành công — nhánh `main`, commit `d98b390` |
 
 > Kiểm tra nhanh sau này: `git ls-files | Measure-Object -Line` và
 > `git ls-files | Select-String '(bin|obj|buildcheck)/'` (phải ra 0 kết quả).
@@ -24,7 +26,17 @@ và các bước còn lại để đẩy lên GitHub.
 
 ## 1. Cấu hình danh tính (bắt buộc, làm 1 lần)
 
-Máy hiện chưa có `user.name` / `user.email` nên Git chưa cho commit.
+Repo này **đã** được cấu hình danh tính ở mức repo (không đụng cấu hình global của máy):
+
+```powershell
+git config user.name    # chienngo713-bit
+git config user.email   # 233412358+chienngo713-bit@users.noreply.github.com
+```
+
+Email dạng `ID+username@users.noreply.github.com` là email noreply do GitHub cấp: commit được
+ghi danh cho tài khoản mà không lộ email thật.
+
+Đổi sang tên/email cá nhân (nếu muốn):
 
 ```powershell
 # Dùng cho mọi repo trên máy
@@ -39,11 +51,20 @@ git config user.email "email-github-cua-ban@gmail.com"
 git config --list | Select-String "user\."
 ```
 
+Commit đã push rồi thì đổi danh tính cần viết lại lịch sử:
+
+```powershell
+git commit --amend --reset-author --no-edit
+git push --force-with-lease origin main
+```
+
+Commit **mới** sau này tự động dùng danh tính vừa cấu hình, không cần amend.
+
 > Dùng **đúng email tài khoản GitHub** nếu muốn commit được tính cho tài khoản đó.
 
 ---
 
-## 2. Commit đầu tiên
+## 2. Commit đầu tiên ✅ đã xong (`d98b390`)
 
 ```powershell
 cd c:\CHIENIT\thigk
@@ -60,7 +81,10 @@ Từ đây mọi thay đổi đều theo vòng lặp: `git add` → `git commit`
 
 ---
 
-## 3. Tạo repository trên GitHub
+## 3. Tạo repository trên GitHub ✅ đã xong
+
+> Repo đã tạo sẵn: <https://github.com/chienngo713-bit/giuaki>
+> (Public, nhánh mặc định `main`, tạo **không** kèm README/gitignore/license nên push không xung đột.)
 
 1. Mở <https://github.com/new>
 2. **Repository name**: ví dụ `toeic-reading` (hoặc `thigk`)
@@ -73,7 +97,10 @@ Từ đây mọi thay đổi đều theo vòng lặp: `git add` → `git commit`
 
 ---
 
-## 4. Thêm remote và push
+## 4. Thêm remote và push ✅ đã xong
+
+> Remote hiện tại: `origin` → `https://github.com/chienngo713-bit/giuaki.git`
+> Lần push đầu đã chạy: `git push -u origin main` → kết quả `* [new branch] main -> main`.
 
 ```powershell
 cd c:\CHIENIT\thigk
